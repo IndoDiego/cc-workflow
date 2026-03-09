@@ -5,6 +5,7 @@
  * Based on: /specs/001-cc-wf-studio/contracts/vscode-extension-api.md section 4.2
  */
 
+import * as crypto from 'crypto';
 import * as vscode from 'vscode';
 import { getCurrentLocale } from './i18n/i18n-service';
 
@@ -70,10 +71,5 @@ export function getWebviewContent(webview: vscode.Webview, extensionUri: vscode.
  * @returns A random 32-character hexadecimal string
  */
 function getNonce(): string {
-  let text = '';
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  for (let i = 0; i < 32; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
+  return crypto.randomBytes(16).toString('hex');
 }

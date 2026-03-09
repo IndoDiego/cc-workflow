@@ -32,3 +32,15 @@ npm-debug.log*
 # Temporary files
 *.tmp
 *.swp
+
+# Security - prevent accidental secret commits
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials.json
+secrets.json
+*.env.*
+!*.env.example
